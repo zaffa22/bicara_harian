@@ -1,0 +1,17 @@
+const assert = require("assert");
+const L = require("../www/logic.js");
+global.window = {}; require("../www/data.js");
+const s = window.SENTENCES;
+s.forEach((x) => assert.strictEqual(L.compare(x.en, x.en).score, 100, x.en));
+assert.strictEqual(L.compare("I am fine, thank you.", "I'm fine thank you").score, 100);
+assert.strictEqual(L.compare("I wake up at six.", "I wake up at 6:00").score, 100);
+const r = L.compare("I like to drink coffee.", "I like drink copy");
+assert.deepStrictEqual(r.words.filter((w) => !w.ok).map((w) => w.word), ["to", "coffee."]);
+assert.strictEqual(r.passed, false);
+assert.strictEqual(L.compare("Hello there", "").score, 0);
+assert.strictEqual(L.todayIndex({}, "2026-11-26", 60), 0);
+assert.strictEqual(L.todayIndex({ 0: "2026-11-26" }, "2026-11-26", 60), 0);
+assert.strictEqual(L.todayIndex({ 0: "2026-11-26" }, "2026-11-27", 60), 1);
+assert.strictEqual(L.streak({ 0: "2026-11-30", 1: "2026-12-01" }, new Date(2026, 11, 2)), 2);
+assert.strictEqual(L.streak({ 0: "2026-11-30" }, new Date(2026, 11, 2)), 0);
+console.log("Semua tes lulus,", s.length, "kalimat");

@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="id">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Bicara Harian</title>
+<link rel="stylesheet" href="style.css">
+</head>
+<body>
+<header>
+  <h1>Bicara Harian</h1>
+  <div class="stats"><span>🔥 <b id="streak">0</b> hari beruntun</span><span>✅ <b id="count">0</b> dikuasai</span></div>
+</header>
+<nav>
+  <button data-tab="latihan" class="active">Latihan</button>
+  <button data-tab="ulang">Ulangi</button>
+  <button data-tab="sendiri">Kalimat sendiri</button>
+</nav>
+<main>
+  <section id="ulang" hidden><p class="muted">Ketuk kalimat untuk melatihnya lagi.</p><ul id="list"></ul></section>
+  <section id="sendiri" hidden>
+    <p class="muted">Ketik kalimat Inggris yang ingin kamu latih. Pastikan tulisannya sudah benar: aplikasi mengoreksi ucapan, bukan tata bahasa.</p>
+    <textarea id="custom" rows="3" placeholder="Contoh: I want to buy a new bag."></textarea>
+    <button id="useCustom" class="secondary">Latih kalimat ini</button>
+  </section>
+  <section id="latihan">
+    <article class="card">
+      <p id="label" class="muted"></p>
+      <h2 id="en" lang="en"></h2>
+      <p id="baca"></p>
+      <p id="arti" class="muted"></p>
+      <div class="row">
+        <button id="play" class="secondary">🔊 Dengar</button>
+        <button id="slow" class="secondary">🐢 Pelan</button>
+      </div>
+    </article>
+    <button id="mic">🎤 Ucapkan</button>
+    <article id="result" class="card" hidden aria-live="polite">
+      <p id="score"></p>
+      <p id="words" lang="en"></p>
+      <p id="heard" class="muted"></p>
+      <p id="advice"></p>
+    </article>
+    <p id="msg" role="alert"></p>
+  </section>
+</main>
+<script src="data.js"></script>
+<script src="logic.js"></script>
+<script src="app.js"></script>
+</body>
+</html>
